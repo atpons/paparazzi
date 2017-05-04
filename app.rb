@@ -22,7 +22,7 @@ class Paparazzi < SlackRubyBot::Bot
   end
 
   command "getcam" do |c, d, m|
-    puts "[*] RUN getcam"
+    puts "[*] RUN getcam from #{d.channel}"
     capture
     upload
     c.say(text: "#{ENV["TEXT"]} #{ENV["URL"]}", channel: d.channel)
