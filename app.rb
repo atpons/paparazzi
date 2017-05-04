@@ -18,11 +18,11 @@ class Paparazzi < SlackRubyBot::Bot
   end
 
   command "ping" do |c, d, m|
-    c.say(text: "pong", channel: d['user']['name'])
+    c.say(text: "#{d["user"]["name"]}", channel: d.channel)
   end
 
   command "getcam" do |c, d, m|
-    puts "[*] RUN getcam from #{d.channel}"
+    puts "[*] RUN getcam"
     capture
     upload
     c.say(text: "#{ENV["TEXT"]} #{ENV["URL"]}", channel: d.channel)
