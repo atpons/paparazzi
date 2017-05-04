@@ -18,7 +18,7 @@ class Paparazzi < SlackRubyBot::Bot
   end
 
   command "ping" do |c, d, m|
-    c.say(text: "pong", channel: d.user)
+    c.say(text: "pong", channel: d['user']['name'])
   end
 
   command "getcam" do |c, d, m|
