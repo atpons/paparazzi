@@ -40,7 +40,6 @@ class Paparazzi < SlackRubyBot::Bot
     upload
     c.say(text: "#{ENV["TEXT"]} #{ENV["URL"]}", channel: d.channel)
   end
-  end
 end
 
 Paparazzi.run
