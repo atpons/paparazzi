@@ -32,6 +32,15 @@ class Paparazzi < SlackRubyBot::Bot
     upload
     c.say(text: "#{ENV["TEXT"]} #{ENV["URL"]}", channel: d.channel)
   end
+
+  command "spycam" do |c, d, m|
+    @log.warn("[-] RUN spycam *spy mode*")
+    c.say(text: "#{ENV["SPY_TEXT"]}", channel: d.channel)
+    capture
+    upload
+    c.say(text: "#{ENV["TEXT"]} #{ENV["URL"]}", channel: d.channel)
+  end
+  end
 end
 
 Paparazzi.run
