@@ -22,6 +22,7 @@ class Paparazzi < SlackRubyBot::Bot
   end
 
   command "getcam" do |c, d, m|
+    c.say(text: "#{ENV["PRE_MESSAGE"]}", channel: d.channel)
     @log.info("[*] RUN getcam")
     unless ENV["SOUND_FILE"].empty?
       @log.info("[*] Playing sound for capture...")
