@@ -4,8 +4,8 @@ require "logger"
 
 Dotenv.load
 
-@log = Logger.new(STDOUT)
 class Paparazzi < SlackRubyBot::Bot
+  @log = Logger.new(STDOUT)
   def self.capture
     @log.info("[*] Capture from Webcam...")
     puts ENV["SAVE_DIR"]
