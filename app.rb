@@ -7,13 +7,13 @@ Dotenv.load
 @log = Logger.new(STDOUT)
 class Paparazzi < SlackRubyBot::Bot
   def self.capture
-    @log("[*] Capture from Webcam...")
+    @log.info("[*] Capture from Webcam...")
     puts ENV["SAVE_DIR"]
     capture = `fswebcam -F 1 -S 20 -r 640x480 #{ENV["SAVE_DIR"]}`
   end
 
   def self.upload
-    @log("[*] Upload to server...")
+    @log.info("[*] Upload to server...")
     upload = `scp #{ENV["SAVE_DIR"]} #{ENV["ID"]}@#{ENV["HOST"]}:`
   end
 
@@ -22,8 +22,9 @@ class Paparazzi < SlackRubyBot::Bot
   end
 
   command "getcam" do |c, d, m|
-    @log("[*] RUN getcam")
+    @log.info("[*] RUN getcam")
     unless ENV["SOUND_FILE"].empty?
+      @log.info("[*] Playing sound for capture...")
       system("mpg321 #{ENV["SOUND_FILE"]}")
     end
     capture
